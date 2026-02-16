@@ -1,0 +1,247 @@
+<!--
+=====================================================
+BEGINNER VERSION — VERY CLEAR STRUCTURE
+=====================================================
+This file has 3 parts:
+
+1) HTML  → structure (text, buttons, layout)
+2) CSS   → design (colors, spacing, fonts)
+3) JS    → interactivity (popup opens/closes)
+
+You can upload this SINGLE file directly to GitHub.
+Nothing else required except your background image.
+=====================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>charity: water</title>
+
+  <!-- =====================================================
+       CSS STARTS HERE  (ALL STYLING / DESIGN)
+       Everything inside <style> is CSS only
+       ===================================================== -->
+  <style>
+
+    /* Reset default browser spacing */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif; /* simpler font */
+    }
+
+    /* Full page background image */
+    body {
+      height: 100vh;
+
+      /* ===============================
+         👉 PUT YOUR IMAGE FILE HERE
+
+         Put image in SAME folder as this file
+
+         Example:
+         index.html
+         Background Image.jpg
+
+         If name changes, change only below
+         =============================== */
+      background-image: url("Background Image.jpg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+
+    /* ===============================
+       TOP WHITE BANNER
+       =============================== */
+    header {
+      height: 144px; /* 1.5 inches */
+      background: white;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      padding: 0 50px;
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+
+    /* ===============================
+       BUTTON STYLE (reusable)
+       =============================== */
+    .btn {
+      background: #ffc907;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+
+    /* ===============================
+       BOTTOM LEFT TEXT
+       =============================== */
+    .content {
+      position: absolute;
+      bottom: 80px;
+      left: 60px;
+      color: black;
+      max-width: 500px;
+    }
+
+    .headline {
+      font-size: 40px;
+      margin-bottom: 20px;
+    }
+
+
+    /* ===============================
+       POPUP (MODAL)
+       =============================== */
+
+    /* dark background behind popup */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      background: rgba(0,0,0,0.5);
+
+      display: none; /* hidden at first */
+
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* white popup box */
+    .modal {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 350px;
+    }
+
+    .amounts button {
+      margin: 5px;
+      padding: 10px;
+    }
+
+  </style>
+  <!-- =====================================================
+       CSS ENDS HERE
+       ===================================================== -->
+
+</head>
+
+
+<body>
+
+
+  <!-- =====================================================
+       HTML STARTS HERE  (PAGE CONTENT)
+       Everything below is structure only
+       ===================================================== -->
+
+  <!-- Top banner -->
+  <header>
+    <div class="logo">charity: water</div>
+    <button class="btn" onclick="openModal()">Give Water Every Month</button>
+  </header>
+
+
+  <!-- Bottom left content -->
+  <div class="content">
+    <div class="headline">
+      Your Help. Their Water.<br>
+      One Project at a Time.
+    </div>
+
+    <button class="btn" onclick="openModal()">Give Water Every Month</button>
+  </div>
+
+
+  <!-- Popup -->
+  <div class="overlay" id="overlay">
+
+    <div class="modal">
+
+      <h2>Make a Donation</h2>
+
+      <p>Choose type:</p>
+      <button onclick="setType('Monthly')">Monthly</button>
+      <button onclick="setType('One-Time')">One-Time</button>
+
+      <p style="margin-top:15px;">Choose amount:</p>
+
+      <div class="amounts">
+        <button>$20</button>
+        <button>$40</button>
+        <button>$60</button>
+        <button>$80</button>
+        <button>$100</button>
+      </div>
+
+      <br>
+      <button class="btn" onclick="closeModal()">Donate</button>
+
+    </div>
+
+  </div>
+
+  <!-- =====================================================
+       HTML ENDS HERE
+       ===================================================== -->
+
+
+
+  <!-- =====================================================
+       JAVASCRIPT STARTS HERE (FUNCTIONALITY ONLY)
+       Controls popup open/close
+       ===================================================== -->
+  <script>
+
+    // get popup
+    const overlay = document.getElementById("overlay");
+
+    // open popup
+    function openModal() {
+      overlay.style.display = "flex";
+    }
+
+    // close popup
+    function closeModal() {
+      overlay.style.display = "none";
+    }
+
+    // simple example (shows type in console)
+    function setType(type) {
+      console.log("Donation type:", type);
+    }
+
+  </script>
+  <!-- =====================================================
+       JAVASCRIPT ENDS HERE
+       ===================================================== -->
+
+</body>
+
+</html>
